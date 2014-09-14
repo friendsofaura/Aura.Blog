@@ -1,0 +1,38 @@
+{
+    "name": "aura/blog",
+    "description": "Aura blog example",
+    "minimum-stability": "dev",
+    "require": {
+        "aura/sql":"2.0.*",
+        "aura/asset-bundle": "2.0.*@dev",
+        "aura/web-kernel": "2.0.*@dev",
+        "kilte/pagination": "1.1.0",
+        "foa/filter-input-bundle": "1.1.*",
+        "foa/filter-intl-bundle": "1.1.*"
+        "foa/html-view-bundle": "2.0.*@dev"
+    },
+    "license": "BSD-2-Clause",
+    "autoload": {
+        "psr-4": {
+            "Aura\\Blog\\":"src/",
+            "Aura\\Blog\\_Config\\":"config/"
+        }
+    },
+    "extra": {
+        "aura": {
+            "type": "bundle",
+            "config": {
+                "common": "Aura\\Blog\\_Config\\Common"
+            }
+        },
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hari KT",
+            "email": "kthari85@gmail.com"
+        }
+    ]
+}
