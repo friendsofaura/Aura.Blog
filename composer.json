@@ -9,7 +9,8 @@
         "kilte/pagination": "1.1.0",
         "foa/filter-input-bundle": "1.1.*",
         "foa/filter-intl-bundle": "1.1.*"
-        "foa/html-view-bundle": "2.0.*@dev"
+        "foa/html-view-bundle": "2.0.*@dev",
+        "aura/router":"dev-issue-62 as 2.0.x-dev"
     },
     "license": "BSD-2-Clause",
     "autoload": {
