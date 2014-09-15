@@ -61,17 +61,17 @@ class BlogCreateActionTest extends \PHPUnit_Framework_TestCase
 
     public function test__Invoke()
     {
-        $this->pdo->expects($this->any())
+        $this->pdo->expects($this->once())
                 ->method('perform')
                 ->will($this->returnValue(true));
 
-        $this->pdo->expects($this->any())
+        $this->pdo->expects($this->once())
                 ->method('lastInsertId')
                 ->will($this->returnValue(1));
 
         $this->row['id'] = 1;
 
-        $this->pdo->expects($this->any())
+        $this->pdo->expects($this->once())
                 ->method('fetchOne')
                 ->will($this->returnValue($this->row));
 
