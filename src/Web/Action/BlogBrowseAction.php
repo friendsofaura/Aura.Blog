@@ -28,6 +28,6 @@ class BlogBrowseAction
         $result = $this->domain->fetchPage($page, $paging);
         $this->responder->setResult($result);
         $this->responder->setAccept($this->request->accept);
-        return $this->responder->__invoke();
+        return $this->responder;
     }
 }

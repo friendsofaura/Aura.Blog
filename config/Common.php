@@ -14,31 +14,30 @@ class Common extends Config
 
         $di->params['Aura\Blog\Web\Action\BlogBrowseAction']['request'] = $di->lazyGet('aura/web-kernel:request');
         $di->params['Aura\Blog\Web\Action\BlogBrowseAction']['domain'] = $di->lazyNew('Aura\Blog\Domain\BlogService');
-        $di->params['Aura\Blog\Web\Action\BlogBrowseAction']['responder'] = $di->lazyNew('Aura\Blog\Web\Responder\BlogBrowseResponder');
+        $di->params['Aura\Blog\Web\Action\BlogBrowseAction']['responder'] = $di->lazyGet('aura/blog:web_responder_blog_browse');
 
         $di->params['Aura\Blog\Web\Action\BlogReadAction']['request'] = $di->lazyGet('aura/web-kernel:request');
         $di->params['Aura\Blog\Web\Action\BlogReadAction']['domain'] = $di->lazyNew('Aura\Blog\Domain\BlogService');
-        $di->params['Aura\Blog\Web\Action\BlogReadAction']['responder'] = $di->lazyNew('Aura\Blog\Web\Responder\BlogReadResponder');
+        $di->params['Aura\Blog\Web\Action\BlogReadAction']['responder'] = $di->lazyGet('aura/blog:web_responder_blog_read');
 
-        $di->params['Aura\Blog\Web\Action\BlogAddAction']['request'] = $di->lazyGet('aura/web-kernel:request');
         $di->params['Aura\Blog\Web\Action\BlogAddAction']['domain'] = $di->lazyNew('Aura\Blog\Domain\BlogService');
-        $di->params['Aura\Blog\Web\Action\BlogAddAction']['responder'] = $di->lazyNew('Aura\Blog\Web\Responder\BlogAddResponder');
+        $di->params['Aura\Blog\Web\Action\BlogAddAction']['responder'] = $di->lazyGet('aura/blog:web_responder_blog_add');
 
         $di->params['Aura\Blog\Web\Action\BlogCreateAction']['request'] = $di->lazyGet('aura/web-kernel:request');
         $di->params['Aura\Blog\Web\Action\BlogCreateAction']['domain'] = $di->lazyNew('Aura\Blog\Domain\BlogService');
-        $di->params['Aura\Blog\Web\Action\BlogCreateAction']['responder'] = $di->lazyNew('Aura\Blog\Web\Responder\BlogCreateResponder');
+        $di->params['Aura\Blog\Web\Action\BlogCreateAction']['responder'] = $di->lazyGet('aura/blog:web_responder_blog_create');
 
         $di->params['Aura\Blog\Web\Action\BlogEditAction']['request'] = $di->lazyGet('aura/web-kernel:request');
         $di->params['Aura\Blog\Web\Action\BlogEditAction']['domain'] = $di->lazyNew('Aura\Blog\Domain\BlogService');
-        $di->params['Aura\Blog\Web\Action\BlogEditAction']['responder'] = $di->lazyNew('Aura\Blog\Web\Responder\BlogEditResponder');
+        $di->params['Aura\Blog\Web\Action\BlogEditAction']['responder'] = $di->lazyGet('aura/blog:web_responder_blog_edit');
 
         $di->params['Aura\Blog\Web\Action\BlogUpdateAction']['request'] = $di->lazyGet('aura/web-kernel:request');
         $di->params['Aura\Blog\Web\Action\BlogUpdateAction']['domain'] = $di->lazyNew('Aura\Blog\Domain\BlogService');
-        $di->params['Aura\Blog\Web\Action\BlogUpdateAction']['responder'] = $di->lazyNew('Aura\Blog\Web\Responder\BlogUpdateResponder');
+        $di->params['Aura\Blog\Web\Action\BlogUpdateAction']['responder'] = $di->lazyGet('aura/blog:web_responder_blog_update');
 
         $di->params['Aura\Blog\Web\Action\BlogDeleteAction']['request'] = $di->lazyGet('aura/web-kernel:request');
         $di->params['Aura\Blog\Web\Action\BlogDeleteAction']['domain'] = $di->lazyNew('Aura\Blog\Domain\BlogService');
-        $di->params['Aura\Blog\Web\Action\BlogDeleteAction']['responder'] = $di->lazyNew('Aura\Blog\Web\Responder\BlogDeleteResponder');
+        $di->params['Aura\Blog\Web\Action\BlogDeleteAction']['responder'] = $di->lazyGet('aura/blog:web_responder_blog_delete');
 
         $di->params['Aura\Blog\Domain\BlogGateway']['pdo'] = $di->lazyNew('Aura\Sql\ExtendedPdo');
         $di->params['Aura\Blog\Domain\BlogGateway']['factory'] = $di->lazyNew('Aura\Blog\Domain\BlogFactory');
@@ -46,7 +45,7 @@ class Common extends Config
         $di->params['Aura\Blog\Domain\BlogService']['gateway'] = $di->lazyNew('Aura\Blog\Domain\BlogGateway');
         $di->params['Aura\Blog\Domain\BlogService']['factory'] = $di->lazyNew('Aura\Blog\Domain\BlogFactory');
         $di->params['Aura\Blog\Domain\BlogService']['result'] = $di->lazyNew('Aura\Blog\Domain\Result\ResultFactory');
-        $di->params['Aura\Blog\Domain\BlogService']['form'] = $di->lazyNew('Aura\Blog\Input\BlogForm');
+        $di->params['Aura\Blog\Domain\BlogService']['form'] = $di->lazyGet('aura/blog:input_blog_form');
 
         $di->setter['Aura\Blog\Html\Helper\Pagination']['setUl'] = $di->lazyNew('Aura\Html\Helper\Ul');
         $di->setter['Aura\Blog\Html\Helper\Pagination']['setAnchor'] = $di->lazyNew('Aura\Html\Helper\Anchor');
@@ -58,6 +57,14 @@ class Common extends Config
 
         $di->params['Aura\Html\HelperLocator']['map']['inputErrors'] = $di->lazyNew('Aura\Blog\Html\Helper\InputErrors');
         $di->setter['Aura\Blog\Html\Helper\InputErrors']['setUl'] = $di->lazyNew('Aura\Html\Helper\Ul');
+        $di->set('aura/blog:web_responder_blog_add', $di->lazyNew('Aura\Blog\Web\Responder\BlogAddResponder'));
+        $di->set('aura/blog:web_responder_blog_browse', $di->lazyNew('Aura\Blog\Web\Responder\BlogBrowseResponder'));
+        $di->set('aura/blog:web_responder_blog_create', $di->lazyNew('Aura\Blog\Web\Responder\BlogCreateResponder'));
+        $di->set('aura/blog:web_responder_blog_delete', $di->lazyNew('Aura\Blog\Web\Responder\BlogDeleteResponder'));
+        $di->set('aura/blog:web_responder_blog_edit', $di->lazyNew('Aura\Blog\Web\Responder\BlogEditResponder'));
+        $di->set('aura/blog:web_responder_blog_read', $di->lazyNew('Aura\Blog\Web\Responder\BlogReadResponder'));
+        $di->set('aura/blog:web_responder_blog_update', $di->lazyNew('Aura\Blog\Web\Responder\BlogUpdateResponder'));
+        $di->set('aura/blog:input_blog_form', $di->lazyNew('Aura\Blog\Input\BlogForm'));
     }
 
     public function modify(Container $di)

@@ -25,6 +25,6 @@ class BlogEditAction
     {
         $result = $this->domain->fetchPost($id);
         $this->responder->setResult($result);
-        return $this->responder->__invoke();
+        return $this->responder;
     }
 }

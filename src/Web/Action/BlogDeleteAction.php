@@ -25,6 +25,6 @@ class BlogDeleteAction
     {
         $result = $this->domain->delete($id);
         $this->responder->setResult($result);
-        return $this->responder->__invoke();
+        return $this->responder;
     }
 }

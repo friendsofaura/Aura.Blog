@@ -26,6 +26,6 @@ class BlogCreateAction
         $data = $this->request->post->get('blog');
         $result = $this->domain->create($data);
         $this->responder->setResult($result);
-        return $this->responder->__invoke();
+        return $this->responder;
     }
 }

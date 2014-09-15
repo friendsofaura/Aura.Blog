@@ -5,10 +5,9 @@ use Aura\Sql\ExtendedPdo;
 
 class BlogGateway
 {
-    public function __construct(ExtendedPdo $pdo, BlogFactory $factory)
+    public function __construct(ExtendedPdo $pdo)
     {
         $this->pdo = $pdo;
-        $this->factory = $factory;
     }
 
     public function fetchOneById($id)
@@ -18,9 +17,7 @@ class BlogGateway
             array('id' => (int) $id)
         );
 
-        if ($row) {
-            return $this->factory->newEntity($row);
-        }
+        return $row;
     }
 
     public function fetchAllByPage($page = 1, $paging = 10)
@@ -30,9 +27,7 @@ class BlogGateway
         $rows = $this->pdo->fetchAll(
             "SELECT * FROM blog ORDER BY id DESC LIMIT $limit OFFSET $offset"
         );
-        if ($rows) {
-            return $this->factory->newCollection($rows);
-        }
+        return $rows;
     }
 
     public function create(array $data)

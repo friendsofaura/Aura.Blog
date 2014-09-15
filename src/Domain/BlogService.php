@@ -9,6 +9,8 @@ class BlogService
 {
     protected $gateway;
     protected $result;
+    protected $factory;
+    protected $form;
 
     public function __construct(
         BlogGateway $gateway,
@@ -25,8 +27,10 @@ class BlogService
     public function fetchPage($page = 1, $paging = 10)
     {
         try {
-            $collection = $this->gateway->fetchAllByPage($page, $paging);
-            if ($collection) {
+            $rows = $this->gateway->fetchAllByPage($page, $paging);
+            if ($rows) {
+                $collection = $this->factory->newCollection($rows);
+
                 return $this->result->found(array(
                     'collection' => $collection,
                     'total' => $this->gateway->getTotal(),
@@ -49,8 +53,9 @@ class BlogService
     public function fetchPost($id)
     {
         try {
-            $blog = $this->gateway->fetchOneById($id);
-            if ($blog) {
+            $row = $this->gateway->fetchOneById($id);
+            if ($row) {
+                $blog = $this->factory->newEntity($row);
                 $this->form->fill((array) $blog);
                 return $this->result->found(array(
                     'blog' => $blog,
@@ -110,12 +115,13 @@ class BlogService
     public function update($id, array $data)
     {
         try {
-            $blog = $this->gateway->fetchOneById($id);
-            if (! $blog) {
+            $row = $this->gateway->fetchOneById($id);
+            if (! $row) {
                 return $this->result->notFound(array(
                     'id' => $id
                 ));
             }
+            $blog = $this->factory->newEntity($row);
             $this->form->fill($data);
             if (! $this->form->filter()) {
                 return $this->result->notValid(
@@ -154,12 +160,13 @@ class BlogService
     public function delete($id)
     {
         try {
-            $blog = $this->gateway->fetchOneById($id);
-            if (! $blog) {
+            $row = $this->gateway->fetchOneById($id);
+            if (! $row) {
                 return $this->result->notFound(array(
                     'id' => $id
                 ));
             }
+            $blog = $this->factory->newEntity($row);
 
             $deleted = $this->gateway->delete($blog);
             if ($deleted) {
@@ -172,6 +179,7 @@ class BlogService
                 ));
             }
         } catch (Exception $e) {
+            throw $e;
             return $this->result->error(array(
                 'exception' => $e,
                 'blog' => $blog,
