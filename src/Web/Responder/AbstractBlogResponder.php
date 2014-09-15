@@ -22,6 +22,7 @@ abstract class AbstractBlogResponder extends AbstractResponder
             'delete-success',
             '_form',
             '_intro',
+            'missing'
         );
 
         $view_registry = $this->view->getViewRegistry();
@@ -38,6 +39,7 @@ abstract class AbstractBlogResponder extends AbstractResponder
             'page',
             'post',
             'sidebar',
+            'notfound'
         );
 
         $layout_registry = $this->view->getLayoutRegistry();

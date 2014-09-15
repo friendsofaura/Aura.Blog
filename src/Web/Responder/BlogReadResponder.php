@@ -21,4 +21,9 @@ class BlogReadResponder extends AbstractBlogResponder
             $this->renderView('read', 'default');
         }
     }
+
+    protected function notFound()
+    {
+        $this->renderView('missing', 'notfound');
+    }
 }

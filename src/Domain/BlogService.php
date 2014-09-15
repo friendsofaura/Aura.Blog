@@ -63,7 +63,8 @@ class BlogService
                 ));
             }
             return $this->result->notFound(array(
-                'id' => $id
+                'id' => $id,
+                'search' => 'Try searching'
             ));
         } catch (Exception $e) {
             return $this->result->error(array(
