@@ -37,9 +37,7 @@ class BlogService
                     'page' => $page
                 ));
             } else {
-                return $this->result->notFound(array(
-                    'collection' => $collection,
-                ));
+                return $this->result->notFound(array());
             }
         } catch (Exception $e) {
             return $this->result->error(array(
