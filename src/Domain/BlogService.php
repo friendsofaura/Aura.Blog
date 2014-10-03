@@ -96,11 +96,13 @@ class BlogService
             if ($row) {
                 $blog = $this->factory->newEntity($row);
                 return $this->result->created(array(
-                    'blog' => $blog
+                    'blog' => $blog,
+                    'blog_form' => $this->form,
                 ));
             } else {
-                return new $this->result->notCreated(array(
+                return $this->result->notCreated(array(
                     'blog' => $data,
+                    'blog_form' => $this->form,
                 ));
             }
         } catch (Exception $e) {
