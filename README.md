@@ -1,6 +1,6 @@
 # Aura.Blog
 
-Aura version 2 blog example using the [Action Domain Responder](https://github.com/pmjones/mvc-refinement).
+Aura version 2 blog example using the [Action Domain Responder](https://github.com/pmjones/adr).
 
 ## Installation
 
@@ -13,23 +13,13 @@ Edit `composer.json` and add `aura/blog`.
 
 ```
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/harikt/Aura.Router"
-        }
-    ],
     "require": {
         // other
 
-        "aura/blog":"2.0.*@dev",
-        "aura/router":"dev-issue-62 as 2.0.x-dev"
+        "aura/blog":"2.0.*@dev"
     },
 }
 ```
-
-The repositories are added for a temporary fix to the bug
-[#62](https://github.com/auraphp/Aura.Router/issues/62)
 
 Create the database and create the table running the code below.
 
