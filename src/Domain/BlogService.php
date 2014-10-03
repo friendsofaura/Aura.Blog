@@ -92,8 +92,9 @@ class BlogService
                     )
                 );
             }
-            $blog = $this->gateway->create($data);
-            if ($blog) {
+            $row = $this->gateway->create($data);
+            if ($row) {
+                $blog = $this->factory->newEntity($row);
                 return $this->result->created(array(
                     'blog' => $blog
                 ));

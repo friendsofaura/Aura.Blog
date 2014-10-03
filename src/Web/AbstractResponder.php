@@ -86,6 +86,7 @@ abstract class AbstractResponder
     protected function notFound()
     {
         $this->response->status->set(404);
+        $this->response->content->set('<html><head><title>Not found</title></head><body>Not found</body></html>');
     }
 
     protected function error()
