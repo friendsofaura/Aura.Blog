@@ -7,31 +7,10 @@ Aura version 2 blog example using the [Action Domain Responder](https://github.c
 ```bash
 composer create-project -s dev aura/web-project aurav2
 cd aurav2
+composer require "aura/blog:2.0.*@dev"
 ```
 
-Edit `composer.json` and add `aura/blog`.
-
-```
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/harikt/Aura.Router"
-        }
-    ],
-    "require": {
-        // other
-
-        "aura/blog":"2.0.*@dev",
-        "aura/router":"dev-issue-62 as 2.0.x-dev"
-    },
-}
-```
-
-The repositories are added for a temporary fix to the bug
-[#62](https://github.com/auraphp/Aura.Router/issues/62)
-
-Create the database and create the table running the code below.
+Create a database and run the code.
 
 ```sql
 SET NAMES utf8;
