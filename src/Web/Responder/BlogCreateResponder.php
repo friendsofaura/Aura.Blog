@@ -5,7 +5,7 @@ use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogCreateResponder extends AbstractBlogResponder
 {
-    protected $result_method = array(
+    protected $payload_method = array(
         'FOA\DomainPayload\Created' => 'created',
         'FOA\DomainPayload\NotCreated' => 'notCreated',
         'FOA\DomainPayload\NotValid' => 'notValid',
@@ -13,7 +13,7 @@ class BlogCreateResponder extends AbstractBlogResponder
 
     protected function created()
     {
-        $blog = $this->result->get('blog');
+        $blog = $this->payload->get('blog');
         $this->response->redirect->afterPost("/blog/read/{$blog->id}");
     }
 

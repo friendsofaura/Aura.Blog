@@ -25,7 +25,6 @@ class BlogReadAction
     {
         $result = $this->domain->fetchPost($id);
         $this->responder->setPayload($result);
-        $this->responder->setAccept($this->request->accept);
         return $this->responder;
     }
 }

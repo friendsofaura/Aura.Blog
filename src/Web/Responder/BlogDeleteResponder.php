@@ -5,7 +5,7 @@ use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogDeleteResponder extends AbstractBlogResponder
 {
-    protected $result_method = array(
+    protected $payload_method = array(
         'FOA\DomainPayload\NotFound' => 'notFound',
         'FOA\DomainPayload\Deleted' => 'deleted',
         'FOA\DomainPayload\NotDeleted' => 'notDeleted',

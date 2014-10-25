@@ -5,7 +5,7 @@ use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogEditResponder extends AbstractBlogResponder
 {
-    protected $result_method = array(
+    protected $payload_method = array(
         'FOA\DomainPayload\Found' => 'found',
         'FOA\DomainPayload\NotFound' => 'notFound',
     );

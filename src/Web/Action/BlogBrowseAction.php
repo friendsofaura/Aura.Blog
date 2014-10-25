@@ -27,7 +27,6 @@ class BlogBrowseAction
         $paging = $this->request->query->get('paging', 10);
         $result = $this->domain->fetchPage($page, $paging);
         $this->responder->setPayload($result);
-        $this->responder->setAccept($this->request->accept);
         return $this->responder;
     }
 }

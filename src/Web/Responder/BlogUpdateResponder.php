@@ -5,7 +5,7 @@ use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogUpdateResponder extends AbstractBlogResponder
 {
-    protected $result_method = array(
+    protected $payload_method = array(
         'FOA\DomainPayload\NotFound' => 'notFound',
         'FOA\DomainPayload\NotValid' => 'notValid',
         'FOA\DomainPayload\Updated' => 'updated',

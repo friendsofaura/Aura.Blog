@@ -10,7 +10,7 @@ class BlogBrowseResponder extends AbstractBlogResponder
         'application/json' => '.json'
     );
 
-    protected $result_method = array(
+    protected $payload_method = array(
         'FOA\DomainPayload\Found' => 'found',
         'FOA\DomainPayload\NotFound' => 'notFound',
     );
