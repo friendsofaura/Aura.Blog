@@ -16,7 +16,7 @@ class BlogService
         BlogGateway $gateway,
         BlogFactory $factory,
         BlogForm $form,
-        ResultFactory $payload_factory
+        PayloadFactory $payload_factory
     ) {
         $this->gateway = $gateway;
         $this->factory = $factory;

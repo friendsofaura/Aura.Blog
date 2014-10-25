@@ -19,7 +19,7 @@ class BlogAddAction
 
     public function __invoke()
     {
-        $this->responder->setResult($this->domain->newPost(array()));
+        $this->responder->setPayload($this->domain->newPost(array()));
         return $this->responder;
     }
 }

@@ -25,7 +25,7 @@ class BlogUpdateAction
     {
         $data = $this->request->post->get('blog');
         $result = $this->domain->update($id, $data);
-        $this->responder->setResult($result);
+        $this->responder->setPayload($result);
         return $this->responder;
     }
 }
