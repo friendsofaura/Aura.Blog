@@ -1,15 +1,15 @@
 <?php
 namespace Aura\Blog\Web\Responder;
 
-use Aura\Blog\Web\AbstractResponder;
+use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogUpdateResponder extends AbstractBlogResponder
 {
     protected $result_method = array(
-        'Aura\Blog\Domain\Result\NotFound' => 'notFound',
-        'Aura\Blog\Domain\Result\NotValid' => 'notValid',
-        'Aura\Blog\Domain\Result\Updated' => 'updated',
-        'Aura\Blog\Domain\Result\NotUpdated' => 'notUpdated',
+        'FOA\DomainPayload\NotFound' => 'notFound',
+        'FOA\DomainPayload\NotValid' => 'notValid',
+        'FOA\DomainPayload\Updated' => 'updated',
+        'FOA\DomainPayload\NotUpdated' => 'notUpdated',
     );
 
     protected function notValid()

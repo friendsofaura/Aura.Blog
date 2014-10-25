@@ -1,14 +1,14 @@
 <?php
 namespace Aura\Blog\Domain;
 
-use Aura\Blog\Domain\Result\ResultFactory;
+use FOA\DomainPayload\PayloadFactory;
 use Aura\Blog\Input\BlogForm;
 use Exception;
 
 class BlogService
 {
     protected $gateway;
-    protected $result;
+    protected $payload_factory;
     protected $factory;
     protected $form;
 
@@ -16,11 +16,11 @@ class BlogService
         BlogGateway $gateway,
         BlogFactory $factory,
         BlogForm $form,
-        ResultFactory $result
+        ResultFactory $payload_factory
     ) {
         $this->gateway = $gateway;
         $this->factory = $factory;
-        $this->result = $result;
+        $this->payload_factory = $payload_factory;
         $this->form = $form;
     }
 
@@ -31,16 +31,16 @@ class BlogService
             if ($rows) {
                 $collection = $this->factory->newCollection($rows);
 
-                return $this->result->found(array(
+                return $this->payload_factory->found(array(
                     'collection' => $collection,
                     'total' => $this->gateway->getTotal(),
                     'page' => $page
                 ));
             } else {
-                return $this->result->notFound(array());
+                return $this->payload_factory->notFound(array());
             }
         } catch (Exception $e) {
-            return $this->result->error(array(
+            return $this->payload_factory->error(array(
                 'exception' => $e,
                 'page' => $page,
                 'paging' => $paging,
@@ -55,17 +55,17 @@ class BlogService
             if ($row) {
                 $blog = $this->factory->newEntity($row);
                 $this->form->fill((array) $blog);
-                return $this->result->found(array(
+                return $this->payload_factory->found(array(
                     'blog' => $blog,
                     'blog_form' => $this->form,
                 ));
             }
-            return $this->result->notFound(array(
+            return $this->payload_factory->notFound(array(
                 'id' => $id,
                 'search' => 'Try searching'
             ));
         } catch (Exception $e) {
-            return $this->result->error(array(
+            return $this->payload_factory->error(array(
                 'exception' => $e,
                 'id' => $id,
             ));
@@ -74,7 +74,7 @@ class BlogService
 
     public function newPost(array $data)
     {
-        return $this->result->newEntity(array(
+        return $this->payload_factory->newEntity(array(
             'blog' => $this->factory->newEntity($data),
             'blog_form' => $this->form
         ));
@@ -85,7 +85,7 @@ class BlogService
         try {
             $this->form->fill($data);
             if (! $this->form->filter()) {
-                return $this->result->notValid(
+                return $this->payload_factory->notValid(
                     array(
                         'blog' => $this->factory->newEntity($data),
                         'blog_form' => $this->form,
@@ -95,19 +95,19 @@ class BlogService
             $row = $this->gateway->create($data);
             if ($row) {
                 $blog = $this->factory->newEntity($row);
-                return $this->result->created(array(
+                return $this->payload_factory->created(array(
                     'blog' => $blog,
                     'blog_form' => $this->form,
                 ));
             } else {
-                return $this->result->notCreated(array(
+                return $this->payload_factory->notCreated(array(
                     'blog' => $data,
                     'blog_form' => $this->form,
                 ));
             }
         } catch (Exception $e) {
             throw $e;
-            return $this->result->error(array(
+            return $this->payload_factory->error(array(
                 'exception' => $e,
                 'data' => $data,
             ));
@@ -119,14 +119,14 @@ class BlogService
         try {
             $row = $this->gateway->fetchOneById($id);
             if (! $row) {
-                return $this->result->notFound(array(
+                return $this->payload_factory->notFound(array(
                     'id' => $id
                 ));
             }
             $blog = $this->factory->newEntity($row);
             $this->form->fill($data);
             if (! $this->form->filter()) {
-                return $this->result->notValid(
+                return $this->payload_factory->notValid(
                     array(
                         'blog' => $blog,
                         'blog_form' => $this->form,
@@ -139,19 +139,19 @@ class BlogService
             $updated = $this->gateway->update($blog);
 
             if ($updated) {
-                return $this->result->updated(array(
+                return $this->payload_factory->updated(array(
                     'blog' => $blog,
                     'blog_form' => $this->form,
                 ));
             } else {
-                return $this->result->notUpdated(array(
+                return $this->payload_factory->notUpdated(array(
                     'blog' => $blog,
                     'blog_form' => $this->form,
                 ));
             }
 
         } catch (Exception $e) {
-            return $this->result->error(array(
+            return $this->payload_factory->error(array(
                 'exception' => $e,
                 'id' => $id,
                 'data' => $data,
@@ -164,7 +164,7 @@ class BlogService
         try {
             $row = $this->gateway->fetchOneById($id);
             if (! $row) {
-                return $this->result->notFound(array(
+                return $this->payload_factory->notFound(array(
                     'id' => $id
                 ));
             }
@@ -172,17 +172,17 @@ class BlogService
 
             $deleted = $this->gateway->delete($blog);
             if ($deleted) {
-                return $this->result->deleted(array(
+                return $this->payload_factory->deleted(array(
                     'blog' => $blog,
                 ));
             } else {
-                return $this->result->notDeleted(array(
+                return $this->payload_factory->notDeleted(array(
                     'blog' => $blog,
                 ));
             }
         } catch (Exception $e) {
             throw $e;
-            return $this->result->error(array(
+            return $this->payload_factory->error(array(
                 'exception' => $e,
                 'blog' => $blog,
             ));

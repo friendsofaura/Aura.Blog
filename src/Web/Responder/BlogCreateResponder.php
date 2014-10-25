@@ -1,14 +1,14 @@
 <?php
 namespace Aura\Blog\Web\Responder;
 
-use Aura\Blog\Web\AbstractResponder;
+use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogCreateResponder extends AbstractBlogResponder
 {
     protected $result_method = array(
-        'Aura\Blog\Domain\Result\Created' => 'created',
-        'Aura\Blog\Domain\Result\NotCreated' => 'notCreated',
-        'Aura\Blog\Domain\Result\NotValid' => 'notValid',
+        'FOA\DomainPayload\Created' => 'created',
+        'FOA\DomainPayload\NotCreated' => 'notCreated',
+        'FOA\DomainPayload\NotValid' => 'notValid',
     );
 
     protected function created()

@@ -9,7 +9,9 @@
         "kilte/pagination": "1.1.0",
         "foa/filter-input-bundle": "1.1.*",
         "foa/filter-intl-bundle": "1.1.*",
-        "foa/html-view-bundle": "2.0.*@dev"
+        "foa/html-view-bundle": "2.*",
+        "foa/domain-payload": "2.0@dev",
+        "foa/responder-bundle": "2.0@dev"
     },
     "license": "BSD-2-Clause",
     "autoload": {

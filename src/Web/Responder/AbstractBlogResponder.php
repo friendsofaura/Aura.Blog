@@ -3,7 +3,7 @@ namespace Aura\Blog\Web\Responder;
 
 use Aura\Web\Response;
 use Aura\Blog\Web\Responder\BlogView;
-use Aura\Blog\Web\AbstractResponder;
+use FOA\Responder_Bundle\AbstractResponder;
 
 abstract class AbstractBlogResponder extends AbstractResponder
 {

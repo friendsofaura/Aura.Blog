@@ -1,14 +1,14 @@
 <?php
 namespace Aura\Blog\Web\Responder;
 
-use Aura\Blog\Web\AbstractResponder;
+use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogDeleteResponder extends AbstractBlogResponder
 {
     protected $result_method = array(
-        'Aura\Blog\Domain\Result\NotFound' => 'notFound',
-        'Aura\Blog\Domain\Result\Deleted' => 'deleted',
-        'Aura\Blog\Domain\Result\NotDeleted' => 'notDeleted',
+        'FOA\DomainPayload\NotFound' => 'notFound',
+        'FOA\DomainPayload\Deleted' => 'deleted',
+        'FOA\DomainPayload\NotDeleted' => 'notDeleted',
     );
 
     protected function deleted()

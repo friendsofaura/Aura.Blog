@@ -44,7 +44,7 @@ class Common extends Config
 
         $di->params['Aura\Blog\Domain\BlogService']['gateway'] = $di->lazyNew('Aura\Blog\Domain\BlogGateway');
         $di->params['Aura\Blog\Domain\BlogService']['factory'] = $di->lazyNew('Aura\Blog\Domain\BlogFactory');
-        $di->params['Aura\Blog\Domain\BlogService']['result'] = $di->lazyNew('Aura\Blog\Domain\Result\ResultFactory');
+        $di->params['Aura\Blog\Domain\BlogService']['payload_factory'] = $di->lazyNew('FOA\DomainPayload\PayloadFactory');
         $di->params['Aura\Blog\Domain\BlogService']['form'] = $di->lazyGet('aura/blog:input_blog_form');
 
         $di->setter['Aura\Blog\Html\Helper\Pagination']['setUl'] = $di->lazyNew('Aura\Html\Helper\Ul');

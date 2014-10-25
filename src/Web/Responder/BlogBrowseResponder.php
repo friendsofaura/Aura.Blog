@@ -1,7 +1,7 @@
 <?php
 namespace Aura\Blog\Web\Responder;
 
-use Aura\Blog\Web\AbstractResponder;
+use FOA\Responder_Bundle\AbstractResponder;
 
 class BlogBrowseResponder extends AbstractBlogResponder
 {
@@ -11,8 +11,8 @@ class BlogBrowseResponder extends AbstractBlogResponder
     );
 
     protected $result_method = array(
-        'Aura\Blog\Domain\Result\Found' => 'found',
-        'Aura\Blog\Domain\Result\NotFound' => 'notFound',
+        'FOA\DomainPayload\Found' => 'found',
+        'FOA\DomainPayload\NotFound' => 'notFound',
     );
 
     protected function found()
