@@ -1,6 +1,6 @@
 # Aura.Blog
 
-Aura version 2 blog example using the [Action Domain Responder](https://github.com/pmjones/mvc-refinement).
+Aura version 2 blog example using the [Action Domain Responder](https://github.com/pmjones/adr).
 
 ## Installation
 
