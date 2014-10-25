@@ -36,6 +36,7 @@ abstract class AbstractBlogResponder extends AbstractResponder
         $layout_names = array(
             'blog',
             'default',
+            'default.json',
             'page',
             'post',
             'sidebar',
