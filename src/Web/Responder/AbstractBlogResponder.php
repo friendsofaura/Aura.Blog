@@ -39,7 +39,7 @@ abstract class AbstractBlogResponder extends AbstractResponder
             'default.json',
             'page',
             'post',
-            'sidebar',
+            // 'sidebar',
             'notfound'
         );
 

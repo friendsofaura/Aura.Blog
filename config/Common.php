@@ -65,6 +65,8 @@ class Common extends Config
         $di->set('aura/blog:web_responder_blog_read', $di->lazyNew('Aura\Blog\Web\Responder\BlogReadResponder'));
         $di->set('aura/blog:web_responder_blog_update', $di->lazyNew('Aura\Blog\Web\Responder\BlogUpdateResponder'));
         $di->set('aura/blog:input_blog_form', $di->lazyNew('Aura\Blog\Input\BlogForm'));
+
+        $di->params['Aura\View\TemplateRegistry']['map']['sidebar'] = dirname(__DIR__) . '/src/Web/Responder/layouts/sidebar.php';
     }
 
     public function modify(Container $di)
@@ -133,14 +135,6 @@ class Common extends Config
                 'REQUEST_METHOD' => 'POST',
             ))
             ->setValues(array('action' => 'aura.blog.update'));
-
-        $router->add('aura.login', '/login')
-            ->setValues([
-                'action' => 'aura.login.get',
-            ])
-            ->addServer(array(
-                'REQUEST_METHOD' => 'GET',
-            ));
     }
 
     public function modifyDispatcher(Container $di)

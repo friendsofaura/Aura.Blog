@@ -2,6 +2,12 @@
     "name": "aura/blog",
     "description": "Aura blog example",
     "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/harikt/Aura.View"
+        }
+    ],
     "require": {
         "aura/sql":"2.0.*",
         "aura/asset-bundle": "2.0.*@dev",
@@ -11,7 +17,8 @@
         "foa/filter-intl-bundle": "1.1.*",
         "foa/html-view-bundle": "2.*",
         "foa/domain-payload": "2.0.*@dev",
-        "foa/responder-bundle": "2.0.*@dev"
+        "foa/responder-bundle": "2.0.*@dev",
+        "aura/view": "dev-bindto as 2.0.x-dev"
     },
     "license": "BSD-2-Clause",
     "autoload": {
