@@ -50,21 +50,4 @@ And browse `http://localhost:8000/blog`
 
 ## Caution
 
-You may need to point to the `bindto` branch.
-
-```json
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/harikt/Aura.View"
-        }
-    ],
-    "require": {
-        //
-        "aura/view": "dev-bindto as 2.0.x-dev"
-    },
-```
-
-This hack is not really needed and can be done without this.But I need to try something different ;-) on another repo.
-
-Thank you for understanding!
+You may need to make use of the dev version of Aura.View .
