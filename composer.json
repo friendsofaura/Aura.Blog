@@ -10,7 +10,7 @@
         "foa/filter-intl-bundle": "~1.1",
         "foa/html-view-bundle": "~2.0",
         "foa/domain-payload": "~1.0",
-        "foa/responder-bundle": "~0.2"
+        "foa/responder-bundle": "~0.3"
     },
     "license": "BSD-2-Clause",
     "autoload": {

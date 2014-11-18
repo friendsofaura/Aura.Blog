@@ -25,7 +25,7 @@ abstract class AbstractBlogResponder extends AbstractResponder
             'missing'
         );
 
-        $view_registry = $this->view->getViewRegistry();
+        $view_registry = $this->getRenderer()->getEngine()->getViewRegistry();
         foreach ($view_names as $name) {
             $view_registry->set(
                 $name,
@@ -43,7 +43,7 @@ abstract class AbstractBlogResponder extends AbstractResponder
             'notfound'
         );
 
-        $layout_registry = $this->view->getLayoutRegistry();
+        $layout_registry = $this->getRenderer()->getEngine()->getLayoutRegistry();
         foreach ($layout_names as $name) {
             $layout_registry->set(
                 $name,

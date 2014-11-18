@@ -68,9 +68,10 @@ class Common extends Config
 
         $di->params['Aura\View\TemplateRegistry']['map']['sidebar'] = dirname(__DIR__) . '/src/Web/Responder/layouts/sidebar.php';
 
+        $di->params['FOA\Responder_Bundle\Renderer\AuraView']['engine'] = $di->lazyNew('Aura\View\View');
         // responder
         $di->params['FOA\Responder_Bundle\AbstractResponder']['response'] = $di->lazyGet('aura/web-kernel:response');
-        $di->params['FOA\Responder_Bundle\AbstractResponder']['renderer'] = $di->lazyNew('Aura\View\View');
+        $di->params['FOA\Responder_Bundle\AbstractResponder']['renderer'] = $di->lazyNew('FOA\Responder_Bundle\Renderer\AuraView');
         $di->params['FOA\Responder_Bundle\AbstractResponder']['accept'] = $di->lazyNew('Aura\Accept\Accept');
     }
 
