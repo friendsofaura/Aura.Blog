@@ -40,6 +40,8 @@ $di->params['Aura\Sql\ExtendedPdo'] = array(
 );
 ```
 
+> Change the `username` and `password` according to yours.
+
 Run your local php server
 
 ```bash
@@ -47,7 +49,3 @@ php -S localhost:8000 web/index.php
 ```
 
 And browse `http://localhost:8000/blog`
-
-## Caution
-
-You may need to make use of the dev version of Aura.View .

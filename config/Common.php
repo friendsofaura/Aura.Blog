@@ -67,6 +67,11 @@ class Common extends Config
         $di->set('aura/blog:input_blog_form', $di->lazyNew('Aura\Blog\Input\BlogForm'));
 
         $di->params['Aura\View\TemplateRegistry']['map']['sidebar'] = dirname(__DIR__) . '/src/Web/Responder/layouts/sidebar.php';
+
+        // responder
+        $di->params['FOA\Responder_Bundle\AbstractResponder']['response'] = $di->lazyGet('aura/web-kernel:response');
+        $di->params['FOA\Responder_Bundle\AbstractResponder']['renderer'] = $di->lazyNew('Aura\View\View');
+        $di->params['FOA\Responder_Bundle\AbstractResponder']['accept'] = $di->lazyNew('Aura\Accept\Accept');
     }
 
     public function modify(Container $di)
@@ -176,16 +181,4 @@ class Common extends Config
             $di->lazyNew('Aura\Blog\Web\Action\BlogUpdateAction')
         );
     }
-
-/*
-    public function defineConnection(Container $di)
-    {
-        $di->params['Aura\Sql\ExtendedPdo'] = array(
-            'dsn' => 'mysql:dbname=auraauth;host=127.0.0.1',
-            'username' => 'root',
-            'password' => 'mysqlroot'
-        );
-        $di->set('connection', $di->lazyNew('Aura\Sql\ExtendedPdo'));
-    }
-*/
 }

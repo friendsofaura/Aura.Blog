@@ -1,17 +1,16 @@
 {
     "name": "aura/blog",
     "description": "Aura blog example",
-    "minimum-stability": "dev",
     "require": {
-        "aura/sql":"2.0.*",
-        "aura/asset-bundle": "2.0.*@dev",
-        "aura/web-kernel": "2.0.*@dev",
-        "kilte/pagination": "1.1.0",
-        "foa/filter-input-bundle": "1.1.*",
-        "foa/filter-intl-bundle": "1.1.*",
-        "foa/html-view-bundle": "2.*",
-        "foa/domain-payload": "2.0.*@dev",
-        "foa/responder-bundle": "2.0.*@dev"
+        "aura/sql":"~2.0",
+        "aura/asset-bundle": "~2.0",
+        "aura/web-kernel": "~2.0",
+        "kilte/pagination": "~1.0",
+        "foa/filter-input-bundle": "~1.1",
+        "foa/filter-intl-bundle": "~1.1",
+        "foa/html-view-bundle": "~2.0",
+        "foa/domain-payload": "~1.0",
+        "foa/responder-bundle": "~0.2"
     },
     "license": "BSD-2-Clause",
     "autoload": {
